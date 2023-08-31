@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NFC Video Trigger</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: black;
+      overflow: hidden;
+      position: relative;
+    }
+    video {
+      width: 40%;
+      height: 40%;
+      display: none;
+    }
+    #loveMessage {
+      display: none; /* Hide the love message */
+    }
+    #replayText {
+      display: none; /* Hide the replay text */
+    }
+    #gifContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body onload="loadGif()" onclick="playVideo()">
+  <video id="videoPlayer" loop style="width: 100%; height: 100vh;">
+    <source src="birds.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div id="gifContainer">
+    <img id="gifImage" src="thedoor.gif" style="max-width: 100%; max-height: 100vh;">
+  </div>
+  <div id="loveMessage">
+    <!-- Remove the love message -->
+  </div>
+  <div id="replayText">
+    <!-- Remove the replay text -->
+  </div>
+  <script>
+    function loadGif() {
+      var gifContainer = document.getElementById('gifContainer');
+      var video = document.getElementById('videoPlayer');
+      var replayText = document.getElementById('replayText');
+      gifContainer.style.display = 'flex'; // Centered GIF container
+      video.style.display = 'none';
+      replayText.style.display = 'none';
+    }
+
+    function playVideo() {
+    var gifContainer = document.getElementById('gifContainer');
+    var video = document.getElementById('videoPlayer');
+    var replayText = document.getElementById('replayText');
+    gifContainer.style.display = 'none';
+    video.style.display = 'block';
+    replayText.style.display = 'none';
+    video.loop = false; // Set loop to false to play the video only once
+    video.play();
+  }
+
+    function replayVideo() {
+      var video = document.getElementById('videoPlayer');
+      video.currentTime = 0;
+      video.play();
+    }
+  </script>
+</body>
+</html>
