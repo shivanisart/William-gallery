@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Unlock Me,2023,Shivani Mathur  </title>
+  <title>Unlock me, 2023. Shivani Mathur, William Gallery, London</title>
   <style>
     body {
       margin: 0;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
@@ -13,66 +14,56 @@
       overflow: hidden;
       position: relative;
     }
-    video {
-      width: 40%;
-      height: 40%;
-      display: none;
+    img, video {
+      width: 60%;
+      height: 60%;
+    }
+    #Message {
+      text-align: center;
     }
     #loveMessage {
-      display: none; /* Hide the love message */
-    }
-    #replayText {
-      display: none; /* Hide the replay text */
-    }
-    #gifContainer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100vh;
+      color: white;
+      font-size: 24px;
+      margin-top: 20px; /* Add some space between lock.gif and "Unlock me" */
     }
   </style>
 </head>
-<body onload="loadGif()" onclick="playVideo()">
-  <video id="videoPlayer" loop style="width: 100%; height: 100vh;">
-    <source src="birds.mp4" type="video/mp4">
+<body>
+  <div id="Message">
+    <img id="lockImage" src="lock.gif" alt="Lock GIF">
+    <!-- Centered "Unlock me" text below the lock.gif -->
+    <div id="loveMessage">Unlock me</div>
+  </div>
+  <audio id="audioPlayer" style="display: none;">
+    <source src="knock.mp3" type="audio/mpeg">
+    Your browser does not support the audio tag.
+  </audio>
+  <!-- Use an MP4 video instead of GIF -->
+  <video id="videoPlayer" loop style="display: none;">
+    <source src="thedoor.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
-  <div id="gifContainer">
-    <img id="gifImage" src="thedoor.GIF"alt="The Door GIF; style="max-width: 100%; max-height: 100vh;">
-  </div>
-  <div id="loveMessage">
-    <!-- Remove the love message -->
-  </div>
-  <div id="replayText">
-    <!-- Remove the replay text -->
-  </div>
   <script>
-    function loadGif() {
-      var gifContainer = document.getElementById('gifContainer');
-      var video = document.getElementById('videoPlayer');
-      var replayText = document.getElementById('replayText');
-      gifContainer.style.display = 'flex'; // Centered GIF container
-      video.style.display = 'none';
-      replayText.style.display = 'none';
+    var lockImage = document.getElementById('lockImage');
+    var loveMessage = document.getElementById('loveMessage');
+    var audioPlayer = document.getElementById('audioPlayer');
+    var videoPlayer = document.getElementById('videoPlayer');
+
+    function playDoor() {
+      lockImage.style.display = 'none';
+      loveMessage.style.display = 'none';
+      audioPlayer.style.display = 'block'; // Display the audio player
+      audioPlayer.play(); // Play the audio
+
+      // Once the audio is finished playing, display the video
+      audioPlayer.addEventListener('ended', function() {
+        audioPlayer.style.display = 'none';
+        videoPlayer.style.display = 'block'; // Display the MP4 video
+        videoPlayer.play(); // Play the video
+      });
     }
 
-    function playVideo() {
-    var gifContainer = document.getElementById('gifContainer');
-    var video = document.getElementById('videoPlayer');
-    var replayText = document.getElementById('replayText');
-    gifContainer.style.display = 'none';
-    video.style.display = 'block';
-    replayText.style.display = 'none';
-    video.loop = false; // Set loop to false to play the video only once
-    video.play();
-  }
-
-    function replayVideo() {
-      var video = document.getElementById('videoPlayer');
-      video.currentTime = 0;
-      video.play();
-    }
+    document.body.addEventListener('click', playDoor);
   </script>
 </body>
 </html>
