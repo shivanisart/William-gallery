@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Unlock me, 2023. Shivani Mathur, William Gallery, London</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Door - Unlock me, 2023. Shivani Mathur, William Gallery, London</title>
   <style>
     body {
       margin: 0;
@@ -13,18 +15,19 @@
       background-color: black;
       overflow: hidden;
       position: relative;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
     img, video {
       max-width: 100%;
       max-height: 100%;
     }
-    
+
     #lockImage {
-      max-width: 100%; /* Ensure the image fits within the viewport */
-      max-height: 70vh; /* Set a maximum height for the image */
-      object-fit: contain; /* Keep the aspect ratio and fit within the specified height */
+      max-width: 100%;
+      max-height: 70vh;
+      object-fit: contain;
     }
-    
+
     #Message {
       text-align: center;
     }
@@ -40,55 +43,67 @@
       position: absolute;
       bottom: 0;
     }
+    .footer-icons {
+      margin-top: 10px;
+    }
+    .footer-icons a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    p {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 13px;
+    }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
 </head>
 <body>
   <div id="Message">
     <img id="lockImage" src="thedoor.GIF" type="image/ GIF" alt="Lock GIF">
-    <!-- Centered "Unlock" text below the lock.gif -->
     <div id="loveMessage">Unlock</div>
   </div>
   <audio id="audioPlayer" style="display: none;">
     <source src="knock.mp3" type="audio/mpeg">
     Your browser does not support the audio tag.
   </audio>
-  <!-- Use an MP4 video instead of GIF -->
-  <video id="videoPlayer" loop style="display: none; max-width: 100%; max-height: 100%;">  
+  <video id="videoPlayer" loop style="display: none; max-width: 100%; max-height: 100%;">
     <source src="doportest.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
-  <!-- Footer -->
   <footer>
-    <!-- Add icons and links in the footer -->
+
+    <p>Contact</p>
     <div class="footer-icons">
       <a href="mailto:shivanimathurart@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.instagram.com/shivanisart/?igshid=OGQ5ZDc2ODk2ZA%3D%3D"><i class="fab fa-instagram"></i></a>
       <a href="https://linkedin.com/in/shivani-mathur-a480438"><i class="fab fa-linkedin"></i></a>
+      <a href="https://shivani-mathur.com"><i class="fas fa-globe"></i></a> <!-- Added website link -->
     </div>
-    <p>&copy; Copyright Shivani Mathur. All rights reserved</p>
+    <p>&copy; Copyright Shivani Mathur. All rights reserved.</p>
   </footer>
   <script>
     var lockImage = document.getElementById('lockImage');
     var loveMessage = document.getElementById('loveMessage');
     var audioPlayer = document.getElementById('audioPlayer');
     var videoPlayer = document.getElementById('videoPlayer');
-    var clickCount = 0; // Track the number of clicks
+    var clickCount = 0;
 
     function playDoor() {
       if (clickCount === 0) {
         lockImage.style.display = 'none';
         loveMessage.style.display = 'none';
-        audioPlayer.style.display = 'block'; // Display the audio player
-        audioPlayer.play(); // Play the audio
+        audioPlayer.style.display = 'block';
+        audioPlayer.play();
 
-        // Once the audio is finished playing, display the video
         audioPlayer.addEventListener('ended', function() {
           audioPlayer.style.display = 'none';
-          videoPlayer.style.display = 'block'; // Display the MP4 video
-          videoPlayer.play(); // Play the video
+          videoPlayer.style.display = 'block';
+          videoPlayer.play();
         });
       }
-      
-      // Increment the click count
+
       clickCount++;
     }
 
