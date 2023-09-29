@@ -7,15 +7,18 @@
   <style>
     body {
       margin: 0;
+      background-color: black;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    .container {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background-color: black;
       overflow: hidden;
       position: relative;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      max-height: 100%; /* Set maximum height for scrolling */
     }
     img, video {
       max-width: 100%;
@@ -42,6 +45,7 @@
       margin-top: 10px;
       position: absolute;
       bottom: 0;
+      width: 100%;
     }
     .footer-icons {
       margin-top: 10px;
@@ -60,26 +64,27 @@
 
 </head>
 <body>
-  <div id="Message">
-    <img id="lockImage" src="thedoor.GIF" type="image/ GIF" alt="Lock GIF">
-    <div id="loveMessage">Unlock</div>
+  <div class="container">
+    <div id="Message">
+      <img id="lockImage" src="thedoor.GIF" type="image/ GIF" alt="Lock GIF">
+      <div id="loveMessage">Unlock</div>
+    </div>
+    <audio id="audioPlayer" style="display: none;">
+      <source src="knock.mp3" type="audio/mpeg">
+      Your browser does not support the audio tag.
+    </audio>
+    <video id="videoPlayer" loop style="display: none; max-width: 100%; max-height: 100%;">
+      <source src="doportest.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
   </div>
-  <audio id="audioPlayer" style="display: none;">
-    <source src="knock.mp3" type="audio/mpeg">
-    Your browser does not support the audio tag.
-  </audio>
-  <video id="videoPlayer" loop style="display: none; max-width: 100%; max-height: 100%;">
-    <source src="doportest.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
   <footer>
-
     <p>Contact</p>
     <div class="footer-icons">
       <a href="mailto:shivanimathurart@gmail.com"><i class="fas fa-envelope"></i></a>
       <a href="https://www.instagram.com/shivanisart/?igshid=OGQ5ZDc2ODk2ZA%3D%3D"><i class="fab fa-instagram"></i></a>
       <a href="https://linkedin.com/in/shivani-mathur-a480438"><i class="fab fa-linkedin"></i></a>
-      <a href="http://www.shivani-mathur.com/"><i class="fas fa-globe"></i></a> <!-- Added website link -->
+      <a href="http://www.shivani-mathur.com/"><i class="fas fa-globe"></i></a>
     </div>
     <p>&copy; Copyright Shivani Mathur. All rights reserved.</p>
   </footer>
@@ -111,4 +116,3 @@
   </script>
 </body>
 </html>
-
