@@ -9,16 +9,18 @@
       margin: 0;
       background-color: black;
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      overflow-y: scroll; /* Allow vertical scrolling */
     }
     .container {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh; /* Use min-height instead of height */
       overflow: hidden;
       position: relative;
-      max-height: 100%; /* Set maximum height for scrolling */
+      max-height: 100%;
+      padding: 20px; /* Add some padding to the container */
     }
     img, video {
       max-width: 100%;
@@ -33,18 +35,17 @@
 
     #Message {
       text-align: center;
+      margin-top: 20px; /* Reduce the margin */
     }
     #loveMessage {
       color: white;
       font-size: 50px;
-      margin-top: 20px;
+      margin-top: 10px; /* Reduce the margin */
     }
     footer {
       text-align: center;
       color: white;
       margin-top: 10px;
-      position: absolute;
-      bottom: 0;
       width: 100%;
     }
     .footer-icons {
@@ -61,14 +62,12 @@
     }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
 </head>
 <body>
   <div class="container">
     <div id="Message">
         <div id="loveMessage">Unlock</div>
-      <img id="lockImage" src="thedoor.GIF" type="image/ GIF" alt="Lock GIF">
-    
+      <img id="lockImage" src="thedoor.GIF" type="image/GIF" alt="Lock GIF">
     </div>
     <audio id="audioPlayer" style="display: none;">
       <source src="knock.mp3" type="audio/mpeg">
@@ -80,7 +79,6 @@
     </video>
   </div>
   <footer>
-  
     <div class="footer-icons">
       <a href="mailto:shivanimathurart@gmail.com"><i class="fas fa-envelope"></i></a>
       <a href="https://www.instagram.com/shivanisart/?igshid=OGQ5ZDc2ODk2ZA%3D%3D"><i class="fab fa-instagram"></i></a>
