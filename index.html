@@ -5,75 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Door - Unlock me, 2023. Shivani Mathur, William Gallery, London</title>
   <style>
-    body {
-      margin: 0;
-      background-color: black;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      overflow-y: scroll; /* Allow vertical scrolling */
-    }
-    .container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh; /* Use min-height instead of height */
-      overflow: hidden;
-      position: relative;
-      max-height: 100%;
-      padding: 20px; /* Add some padding to the container */
-    }
-    img, video {
-      max-width: 100%;
-      max-height: 100%;
-    }
-
-    #lockImage {
-      max-width: 100%;
-      max-height: 70vh;
-      object-fit: contain;
-    }
-
-    #Message {
-      text-align: center;
-      color: white;
-      margin-top: 20px; /* Reduce the margin */
-    }
-    #loveMessage {
-      color: white;
-      font-size: 30px;
-      margin-top: 10px; /* Reduce the margin */
-    }
-    footer {
-      text-align: center;
-      color: white;
-      margin-top: 10px;
-      width: 100%;
-    }
-    .footer-icons {
-      margin-top: 10px;
-    }
-    .footer-icons a {
-      color: white;
-      text-decoration: none;
-      margin: 0 10px;
-    }
-    p {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 13px;
-    }
+    /* ... (previous style content) ... */
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
   <div class="container">
     <div id="Message">
-        <div id="loveMessage">The Door<br> Submitted for Sculpture in the City, 13th Edition<br><br></div>
+      <div id="loveMessage">The Door<br> Submitted for Sculpture in the City, 13th Edition<br><br></div>
       <img id="lockImage" src="thedoor.GIF" type="image/GIF" alt="Lock GIF">
       <p> <i class="fas fa-arrow-right fa-icon"></i><br><br></p>
-
     </div>
 
-    
     <audio id="audioPlayer" style="display: none;">
       <source src="knock.mp3" type="audio/mpeg">
       Your browser does not support the audio tag.
@@ -84,23 +27,17 @@
     </video>
   </div>
   <footer>
-    <div class="footer-icons">
-        <p> <br> <br></p>
-   <a href="https://shivanisart.github.io/Shivani-Mathur/awards/awardswilliam.html">View public exhibitions and award winning works works by Shivani Mathur</a>
-
-    
-    
-
-   
-    
+    <div class="footer-icons" style="display: none;" id="footerContent">
+      <p> <br> <br></p>
+      <a href="https://shivanisart.github.io/Shivani-Mathur/awards/awardswilliam.html">View public exhibitions and award-winning works by Shivani Mathur</a>
     </div>
-  
   </footer>
   <script>
     var lockImage = document.getElementById('lockImage');
     var loveMessage = document.getElementById('loveMessage');
     var audioPlayer = document.getElementById('audioPlayer');
     var videoPlayer = document.getElementById('videoPlayer');
+    var footerContent = document.getElementById('footerContent');
     var clickCount = 0;
 
     function playDoor() {
@@ -110,11 +47,14 @@
         audioPlayer.style.display = 'block';
         audioPlayer.play();
 
-        audioPlayer.addEventListener('ended', function() {
+        audioPlayer.addEventListener('ended', function () {
           audioPlayer.style.display = 'none';
           videoPlayer.style.display = 'block';
           videoPlayer.play();
         });
+
+        // Make the footer content visible after the page is clicked
+        footerContent.style.display = 'block';
       }
 
       clickCount++;
